@@ -1,0 +1,103 @@
+/* here before everything
+and after everything */
+*, *::before, *::after{
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-weight: normal;
+}
+
+body{
+    /* removing all padding and margin
+    so that our background fills our 
+    entire screen */
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(to right, #00AAFF, #00FF6C);
+}
+
+.calculator-grid{
+    display: grid;
+    justify-content: center;
+    /* there is a difference between 
+    align-content and align items
+    align items aligns all the individual
+    items, but align-content aligns the
+    entire content */
+    align-content: center;
+    /* it's just going to fill 100% of the
+    height all the time */
+    min-height: 100vh;
+    /* there will be 4 columns and 
+    all are going to be 100px wide */
+    grid-template-columns: repeat(4, 100px);
+    /* here first row is min 120px and max auto
+    and rest of them are 5 rows */
+    grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+}
+
+/* selecting all the button inside the
+grid */
+.calculator-grid > button{
+    cursor: pointer;
+    font-size: 2rem;
+    border: 1px solid white;
+    /* removing outline which browsers 
+    by defualt provides */
+    outline: none;
+    /* here the bgcolor is white but it's
+    75% opaque */
+    background-color: rgba(255, 255, 255, .75);
+
+}
+
+.calculator-grid > button:hover{
+    /* when hovered the opacity would
+    be 90% */
+    background-color: rgba(255, 255, 255, .9);
+
+}
+
+.span-two{
+    /* with this the column of 2 width
+    can be taken */
+    grid-column: span 2;
+}
+
+.output{
+    /* with this the whole grid-column
+    can be taken from first to last */
+    grid-column: 1 / -1;
+    background-color: rgba(0, 0, 0, .75);
+    display: flex;
+    align-items: flex-end;
+    /* this will push the element a little
+    closer to each other */
+    justify-content: space-around;
+    /* with this the flex items will be justified
+    vertically */
+    flex-direction: column;
+    padding: 10px;
+    /* to wrap the text
+    so if the text gets too
+    big the text will just go to
+    the next line instead of breaking */
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+/* inside of our output element */
+
+.output .previous-operand{
+    color: rgba(255, 255, 255, .75);
+    font-size: 1.5rem;
+}
+
+.output .current-operand{
+    color: white;
+    font-size: 2.5rem;
+}
+
+
+
+
+
